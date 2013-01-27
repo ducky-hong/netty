@@ -21,6 +21,7 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelPromise;
 import io.netty.channel.ChannelTaskScheduler;
 import io.netty.channel.SingleThreadEventLoop;
+import io.netty.util.MapBackedSet;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,7 +35,7 @@ import java.util.concurrent.ThreadFactory;
  */
 final class AioEventLoop extends SingleThreadEventLoop {
 
-    private final Set<Channel> channels = Collections.newSetFromMap(new IdentityHashMap<Channel, Boolean>());
+    private final Set<Channel> channels = new MapBackedSet<Channel>(new IdentityHashMap<Channel, Boolean>());
 
     private final ChannelFutureListener registrationListener = new ChannelFutureListener() {
         @Override

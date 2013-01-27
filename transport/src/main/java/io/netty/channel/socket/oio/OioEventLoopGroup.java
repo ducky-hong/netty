@@ -23,6 +23,7 @@ import io.netty.channel.ChannelPromise;
 import io.netty.channel.ChannelTaskScheduler;
 import io.netty.channel.EventLoop;
 import io.netty.channel.EventLoopGroup;
+import io.netty.util.MapBackedSet;
 
 import java.util.Collections;
 import java.util.Queue;
@@ -43,7 +44,7 @@ public class OioEventLoopGroup implements EventLoopGroup {
     private final int maxChannels;
     final ChannelTaskScheduler scheduler;
     final ThreadFactory threadFactory;
-    final Set<OioEventLoop> activeChildren = Collections.newSetFromMap(
+    final Set<OioEventLoop> activeChildren = new MapBackedSet<OioEventLoop>(
             new ConcurrentHashMap<OioEventLoop, Boolean>());
     final Queue<OioEventLoop> idleChildren = new ConcurrentLinkedQueue<OioEventLoop>();
     private final ChannelException tooManyChannels;
