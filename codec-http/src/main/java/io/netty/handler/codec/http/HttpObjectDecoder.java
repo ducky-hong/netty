@@ -503,7 +503,7 @@ public abstract class HttpObjectDecoder extends ReplayingDecoder<HttpObjectDecod
         String line = readHeader(buffer);
         String name = null;
         String value = null;
-        if (!line.isEmpty()) {
+        if (!(line.length() == 0)) {
             headers.clear();
             do {
                 char firstChar = line.charAt(0);
@@ -519,7 +519,7 @@ public abstract class HttpObjectDecoder extends ReplayingDecoder<HttpObjectDecod
                 }
 
                 line = readHeader(buffer);
-            } while (!line.isEmpty());
+            } while (!(line.length() == 0));
 
             // Add the last header.
             if (name != null) {
@@ -546,7 +546,7 @@ public abstract class HttpObjectDecoder extends ReplayingDecoder<HttpObjectDecod
         headerSize = 0;
         String line = readHeader(buffer);
         String lastHeader = null;
-        if (!line.isEmpty()) {
+        if (!(line.length() == 0)) {
             LastHttpContent trailer = new DefaultLastHttpContent(Unpooled.EMPTY_BUFFER);
             do {
                 char firstChar = line.charAt(0);
@@ -571,7 +571,7 @@ public abstract class HttpObjectDecoder extends ReplayingDecoder<HttpObjectDecod
                 }
 
                 line = readHeader(buffer);
-            } while (!line.isEmpty());
+            } while (!(line.length() == 0));
 
             return trailer;
         }

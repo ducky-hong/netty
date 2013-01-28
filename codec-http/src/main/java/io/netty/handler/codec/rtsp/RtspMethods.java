@@ -123,7 +123,7 @@ public final class RtspMethods {
         }
 
         name = name.trim().toUpperCase();
-        if (name.isEmpty()) {
+        if (name.length() == 0) {
             throw new IllegalArgumentException("empty name");
         }
 

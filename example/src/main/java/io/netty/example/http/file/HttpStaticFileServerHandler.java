@@ -143,7 +143,7 @@ public class HttpStaticFileServerHandler extends ChannelInboundMessageHandlerAda
 
         // Cache Validation
         String ifModifiedSince = request.headers().get(IF_MODIFIED_SINCE);
-        if (ifModifiedSince != null && !ifModifiedSince.isEmpty()) {
+        if (ifModifiedSince != null && !(ifModifiedSince.length() == 0)) {
             SimpleDateFormat dateFormatter = new SimpleDateFormat(HTTP_DATE_FORMAT, Locale.US);
             Date ifModifiedSinceDate = dateFormatter.parse(ifModifiedSince);
 

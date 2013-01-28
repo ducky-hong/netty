@@ -231,7 +231,7 @@ public final class NetUtil {
                 if (":".equals(token)) {
                     if (":".equals(prevToken)) {
                         doubleColonIndex = hexStrings.size();
-                    } else if (!prevToken.isEmpty()) {
+                    } else if (!(prevToken.length() == 0)) {
                         hexStrings.add(prevToken);
                     }
                 } else if (".".equals(token)) {

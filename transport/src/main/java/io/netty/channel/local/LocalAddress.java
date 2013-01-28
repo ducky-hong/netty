@@ -56,7 +56,7 @@ public final class LocalAddress extends SocketAddress implements Comparable<Loca
             throw new NullPointerException("id");
         }
         id = id.trim().toLowerCase();
-        if (id.isEmpty()) {
+        if (id.length() == 0) {
             throw new IllegalArgumentException("empty id");
         }
         this.id = id;

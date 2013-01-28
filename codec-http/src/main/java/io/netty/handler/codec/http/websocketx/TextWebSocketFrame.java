@@ -66,7 +66,7 @@ public class TextWebSocketFrame extends WebSocketFrame {
     }
 
     private static ByteBuf fromText(String text) {
-        if (text == null || text.isEmpty()) {
+        if (text == null || text.length() == 0) {
             return Unpooled.EMPTY_BUFFER;
         } else {
             return Unpooled.copiedBuffer(text, CharsetUtil.UTF_8);

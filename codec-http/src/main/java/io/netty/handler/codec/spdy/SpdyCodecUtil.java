@@ -317,7 +317,7 @@ final class SpdyCodecUtil {
         if (name == null) {
             throw new NullPointerException("name");
         }
-        if (name.isEmpty()) {
+        if (name.length() == 0) {
             throw new IllegalArgumentException(
                     "name cannot be length zero");
         }

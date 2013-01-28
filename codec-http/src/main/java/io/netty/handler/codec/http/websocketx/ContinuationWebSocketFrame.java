@@ -105,7 +105,7 @@ public class ContinuationWebSocketFrame extends WebSocketFrame {
      *            text to store
      */
     private static ByteBuf fromText(String text) {
-        if (text == null || text.isEmpty()) {
+        if (text == null || text.length() == 0) {
             return Unpooled.EMPTY_BUFFER;
         } else {
             return Unpooled.copiedBuffer(text, CharsetUtil.UTF_8);

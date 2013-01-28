@@ -202,7 +202,7 @@ public class QueryStringDecoder {
                 }
                 decodeParams(uri.substring(pathLength + 1));
             } else {
-                if (uri.isEmpty()) {
+                if (uri.length() == 0) {
                     return Collections.emptyMap();
                 }
                 decodeParams(uri);

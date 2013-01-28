@@ -38,7 +38,7 @@ public abstract class AbstractHttpData implements HttpData {
             throw new NullPointerException("name");
         }
         name = name.trim();
-        if (name.isEmpty()) {
+        if (name.length() == 0) {
             throw new IllegalArgumentException("empty name");
         }
 

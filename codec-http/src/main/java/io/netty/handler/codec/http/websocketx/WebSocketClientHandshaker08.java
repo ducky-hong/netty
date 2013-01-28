@@ -102,11 +102,11 @@ public class WebSocketClientHandshaker08 extends WebSocketClientHandshaker {
         // Get path
         URI wsURL = uri();
         String path = wsURL.getPath();
-        if (wsURL.getQuery() != null && !wsURL.getQuery().isEmpty()) {
+        if (wsURL.getQuery() != null && !(wsURL.getQuery().length() == 0)) {
             path = wsURL.getPath() + '?' + wsURL.getQuery();
         }
 
-        if (path == null || path.isEmpty()) {
+        if (path == null || path.length() == 0) {
             path = "/";
         }
 
@@ -142,7 +142,7 @@ public class WebSocketClientHandshaker08 extends WebSocketClientHandshaker {
         headers.add(Names.SEC_WEBSOCKET_ORIGIN, originValue);
 
         String expectedSubprotocol = expectedSubprotocol();
-        if (expectedSubprotocol != null && !expectedSubprotocol.isEmpty()) {
+        if (expectedSubprotocol != null && !(expectedSubprotocol.length() == 0)) {
             headers.add(Names.SEC_WEBSOCKET_PROTOCOL, expectedSubprotocol);
         }
 

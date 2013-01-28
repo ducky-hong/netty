@@ -85,7 +85,7 @@ public class HttpVersion implements Comparable<HttpVersion> {
         }
 
         text = text.trim().toUpperCase();
-        if (text.isEmpty()) {
+        if (text.length() == 0) {
             throw new IllegalArgumentException("empty text");
         }
 
@@ -120,7 +120,7 @@ public class HttpVersion implements Comparable<HttpVersion> {
         }
 
         protocolName = protocolName.trim().toUpperCase();
-        if (protocolName.isEmpty()) {
+        if (protocolName.length() == 0) {
             throw new IllegalArgumentException("empty protocolName");
         }
 
