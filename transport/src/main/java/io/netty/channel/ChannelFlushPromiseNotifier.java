@@ -16,6 +16,7 @@
 package io.netty.channel;
 
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 
 /**
@@ -25,7 +26,7 @@ import java.util.Queue;
 public final class ChannelFlushPromiseNotifier {
 
     private long writeCounter;
-    private final Queue<FlushCheckpoint> flushCheckpoints = new ArrayDeque<FlushCheckpoint>();
+    private final Queue<FlushCheckpoint> flushCheckpoints = new LinkedList<FlushCheckpoint>();
 
     /**
      * Add a {@link ChannelPromise} to this {@link ChannelFlushPromiseNotifier} which will be notified after the given

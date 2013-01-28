@@ -25,14 +25,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.GatheringByteChannel;
 import java.nio.channels.ScatteringByteChannel;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Queue;
+import java.util.*;
 
 
 /**
@@ -1553,7 +1546,7 @@ public class DefaultCompositeByteBuf extends AbstractByteBuf implements Composit
     @Override
     public CompositeByteBuf suspendIntermediaryDeallocations() {
         if (suspendedDeallocations == null) {
-            suspendedDeallocations = new ArrayDeque<ByteBuf>(2);
+            suspendedDeallocations = new LinkedList<ByteBuf>();
         }
         return this;
     }

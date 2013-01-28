@@ -18,12 +18,13 @@ package io.netty.buffer;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * Default {@link MessageBuf} implementation
  *
  */
-final class DefaultMessageBuf<T> extends ArrayDeque<T> implements MessageBuf<T> {
+final class DefaultMessageBuf<T> extends LinkedList<T> implements MessageBuf<T> {
 
     private static final long serialVersionUID = 1229808623624907552L;
 
@@ -32,7 +33,7 @@ final class DefaultMessageBuf<T> extends ArrayDeque<T> implements MessageBuf<T> 
     DefaultMessageBuf() { }
 
     DefaultMessageBuf(int initialCapacity) {
-        super(initialCapacity);
+        super();
     }
 
     @Override
@@ -55,13 +56,13 @@ final class DefaultMessageBuf<T> extends ArrayDeque<T> implements MessageBuf<T> 
     @Override
     public T pollFirst() {
         ensureValid();
-        return super.pollFirst();
+        return isEmpty() ? null : removeFirst();
     }
 
     @Override
     public T pollLast() {
         ensureValid();
-        return super.pollLast();
+        return isEmpty() ? null : removeLast();
     }
 
     @Override
@@ -79,25 +80,29 @@ final class DefaultMessageBuf<T> extends ArrayDeque<T> implements MessageBuf<T> 
     @Override
     public T peekFirst() {
         ensureValid();
-        return super.peekFirst();
+        return super.peek();
     }
 
     @Override
     public T peekLast() {
         ensureValid();
-        return super.peekLast();
+        return isEmpty() ? null : super.getLast();
     }
 
     @Override
     public boolean removeFirstOccurrence(Object o) {
         ensureValid();
-        return super.removeFirstOccurrence(o);
+        return super.remove(o);
     }
 
     @Override
     public boolean removeLastOccurrence(Object o) {
         ensureValid();
-        return super.removeLastOccurrence(o);
+        int i = lastIndexOf(o);
+        if (i == -1) {
+            return false;
+        }
+        return super.remove(i) != null;
     }
 
     @Override
@@ -137,9 +142,9 @@ final class DefaultMessageBuf<T> extends ArrayDeque<T> implements MessageBuf<T> 
     }
 
     @Override
-    public ArrayDeque<T> clone() {
+    public LinkedList<T> clone() {
         ensureValid();
-        return super.clone();
+        return (LinkedList<T>) super.clone();
     }
 
     @Override

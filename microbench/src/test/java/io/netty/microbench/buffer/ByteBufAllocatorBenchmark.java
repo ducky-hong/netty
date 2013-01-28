@@ -25,6 +25,7 @@ import io.netty.microbench.util.DefaultBenchmark;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 public class ByteBufAllocatorBenchmark extends DefaultBenchmark {
 
@@ -37,7 +38,7 @@ public class ByteBufAllocatorBenchmark extends DefaultBenchmark {
     @Param
     private Allocator allocator;
 
-    private final Deque<ByteBuf> queue = new ArrayDeque<ByteBuf>();
+    private final Queue<ByteBuf> queue = new LinkedList<ByteBuf>();
     private ByteBufAllocator alloc;
 
     @Override
@@ -58,7 +59,7 @@ public class ByteBufAllocatorBenchmark extends DefaultBenchmark {
 
     public void timeAllocAndFree(int reps) {
         final ByteBufAllocator alloc = this.alloc;
-        final Deque<ByteBuf> queue = this.queue;
+        final Queue<ByteBuf> queue = this.queue;
         final int size = this.size;
 
         for (int i = 0; i < reps; i ++) {

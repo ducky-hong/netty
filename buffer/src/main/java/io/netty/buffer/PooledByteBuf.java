@@ -21,6 +21,7 @@ import io.netty.util.ResourceLeak;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 
 abstract class PooledByteBuf<T> extends AbstractByteBuf {
@@ -146,7 +147,7 @@ abstract class PooledByteBuf<T> extends AbstractByteBuf {
     public final ByteBuf suspendIntermediaryDeallocations() {
         checkUnfreed();
         if (suspendedDeallocations == null) {
-            suspendedDeallocations = new ArrayDeque<Allocation<T>>(2);
+            suspendedDeallocations = new LinkedList<Allocation<T>>();
         }
         return this;
     }

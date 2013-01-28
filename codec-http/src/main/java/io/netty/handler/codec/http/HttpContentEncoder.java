@@ -23,6 +23,7 @@ import io.netty.channel.embedded.EmbeddedByteChannel;
 import io.netty.handler.codec.MessageToMessageCodec;
 
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 
 /**
@@ -49,7 +50,7 @@ import java.util.Queue;
  */
 public abstract class HttpContentEncoder extends MessageToMessageCodec<HttpMessage, Object> {
 
-    private final Queue<String> acceptEncodingQueue = new ArrayDeque<String>();
+    private final Queue<String> acceptEncodingQueue = new LinkedList<String>();
     private EmbeddedByteChannel encoder;
     private HttpMessage message;
     private boolean encodeStarted;

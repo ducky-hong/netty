@@ -21,10 +21,7 @@ import io.netty.channel.ChannelPromise;
 import io.netty.channel.EventLoop;
 import io.netty.channel.EventLoopGroup;
 
-import java.util.ArrayDeque;
-import java.util.Collections;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.AbstractExecutorService;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ScheduledFuture;
@@ -32,7 +29,7 @@ import java.util.concurrent.TimeUnit;
 
 final class EmbeddedEventLoop extends AbstractExecutorService implements EventLoop {
 
-    private final Queue<Runnable> tasks = new ArrayDeque<Runnable>(2);
+    private final Queue<Runnable> tasks = new LinkedList<Runnable>();
 
     @Override
     public void execute(Runnable command) {

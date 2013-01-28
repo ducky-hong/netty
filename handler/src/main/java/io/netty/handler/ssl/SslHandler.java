@@ -42,6 +42,7 @@ import java.nio.channels.ClosedChannelException;
 import java.nio.channels.DatagramChannel;
 import java.nio.channels.SocketChannel;
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ScheduledFuture;
@@ -162,7 +163,7 @@ public class SslHandler
     private final boolean startTls;
     private boolean sentFirstMessage;
 
-    private final Queue<ChannelPromise> handshakePromises = new ArrayDeque<ChannelPromise>();
+    private final Queue<ChannelPromise> handshakePromises = new LinkedList<ChannelPromise>();
     private final SSLEngineInboundCloseFuture sslCloseFuture = new SSLEngineInboundCloseFuture();
 
     private volatile long handshakeTimeoutMillis = 10000;

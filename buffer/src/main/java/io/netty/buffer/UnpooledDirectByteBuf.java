@@ -27,6 +27,7 @@ import java.nio.channels.ClosedChannelException;
 import java.nio.channels.GatheringByteChannel;
 import java.nio.channels.ScatteringByteChannel;
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 
 /**
@@ -479,7 +480,7 @@ final class UnpooledDirectByteBuf extends AbstractByteBuf {
     @Override
     public ByteBuf suspendIntermediaryDeallocations() {
         if (suspendedDeallocations == null) {
-            suspendedDeallocations = new ArrayDeque<ByteBuffer>(2);
+            suspendedDeallocations = new LinkedList<ByteBuffer>();
         }
         return this;
     }
