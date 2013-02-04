@@ -26,7 +26,7 @@ public class PooledByteBufAllocator extends AbstractByteBufAllocator {
     private static final int DEFAULT_NUM_HEAP_ARENA = Runtime.getRuntime().availableProcessors();
     private static final int DEFAULT_NUM_DIRECT_ARENA = Runtime.getRuntime().availableProcessors();
     private static final int DEFAULT_PAGE_SIZE = 8192;
-    private static final int DEFAULT_MAX_ORDER = 11; // 8192 << 11 = 16 MiB per chunk
+    private static final int DEFAULT_MAX_ORDER = 7; // 8192 << 7 = 1 MiB per chunk
 
     private static final int MIN_PAGE_SIZE = 4096;
     private static final int MAX_CHUNK_SIZE = (int) (((long) Integer.MAX_VALUE + 1) / 2);
